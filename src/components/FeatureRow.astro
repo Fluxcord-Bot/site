@@ -1,6 +1,6 @@
 ---
-import { Image } from 'astro:assets';
-import placeholderImage from '../assets/Group 160.png';
+import { Image } from "astro:assets";
+import placeholderImage from "../assets/Group 160.png";
 
 interface Props {
   title: string;
@@ -9,7 +9,7 @@ interface Props {
   reverse?: boolean;
 }
 
-const { title, image, alt = '', reverse = false } = Astro.props;
+const { title, image, alt = "", reverse = false } = Astro.props;
 ---
 
 <section class="feature" data-reverse={reverse || undefined}>
@@ -21,7 +21,12 @@ const { title, image, alt = '', reverse = false } = Astro.props;
   </div>
 
   <figure class="media">
-    <Image src={image ?? placeholderImage} alt={alt} loading="lazy" decoding="async" />
+    <Image
+      src={image ?? placeholderImage}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+    />
   </figure>
 </section>
 
@@ -46,10 +51,18 @@ const { title, image, alt = '', reverse = false } = Astro.props;
     order: 1;
   }
 
-  @media (max-width: 49.999rem) {
+  @media (max-width: 1000px) {
     .feature,
     .feature[data-reverse] {
       grid-template-columns: minmax(0, 1fr);
+    }
+
+    .feature[data-reverse] .copy {
+      order: 1;
+    }
+
+    .feature[data-reverse] .media {
+      order: 2;
     }
   }
 
