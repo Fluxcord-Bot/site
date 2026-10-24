@@ -1,0 +1,98 @@
+---
+import { Image } from 'astro:assets';
+import placeholderImage from '../assets/Group 160.png';
+
+interface Props {
+  title: string;
+  image?: ImageMetadata;
+  alt?: string;
+  reverse?: boolean;
+}
+
+const { title, image, alt = '', reverse = false } = Astro.props;
+---
+
+<section class="feature" data-reverse={reverse || undefined}>
+  <div class="copy">
+    <h2 class="title">{title}</h2>
+    <div class="body">
+      <slot />
+    </div>
+  </div>
+
+  <figure class="media">
+    <Image src={image ?? placeholderImage} alt={alt} loading="lazy" decoding="async" />
+  </figure>
+</section>
+
+<style>
+  .feature {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 650px);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
+    margin-block: clamp(3rem, 8vw, 5rem);
+  }
+
+  .feature[data-reverse] {
+    grid-template-columns: minmax(0, 650px) minmax(0, 1fr);
+  }
+
+  .feature[data-reverse] .copy {
+    order: 2;
+  }
+
+  .feature[data-reverse] .media {
+    order: 1;
+  }
+
+  @media (max-width: 49.999rem) {
+    .feature,
+    .feature[data-reverse] {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .copy {
+    min-width: 0;
+
+    h2 {
+      font-size: 2.5em;
+    }
+  }
+
+  .title {
+    margin: 0 0 1rem;
+    font-size: var(--sl-text-h3);
+    line-height: var(--sl-line-height-headings);
+    color: var(--sl-color-white);
+    text-wrap: balance;
+  }
+
+  .body {
+    color: var(--sl-color-gray-2);
+    text-wrap: pretty;
+  }
+
+  .body > :first-child {
+    margin-top: 0;
+  }
+
+  .body > :last-child {
+    margin-bottom: 0;
+  }
+
+  .media {
+    display: flex;
+    min-width: 0;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .media img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+  }
+</style>

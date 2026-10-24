@@ -31,27 +31,39 @@ hero:
       link: /donate/
 ---
 
-import { CardGrid, Card } from '@astrojs/starlight/components';
+import { Card } from '@astrojs/starlight/components';
+import FeatureRow from '../../components/FeatureRow.astro';
 import FluxerHost from '../../components/FluxerHost.astro';
 
-<CardGrid stagger>
-	<Card title="Everything you expect on a bridge bot" icon="link">
-		It can bridge messages, replies, attachments, emojis, embeds, (bulk-)deletions, edits, and bots, just like any ordinary bridge bot.
-	</Card>
-	<Card title="Scream, cross-platform." icon="seti:audio">
-		Worried about missing a game night? Want to hang out with your friends that's still on the other side? No problem, with Fluxcord's Voice Bridging, you will just seamlessly talk to them, as if they're in the same VC!
-	</Card>
-	<Card title="Headpats-compatible." icon="comment-alt">
-		No more fighting with your bridge bot over unproxied messages, now with Fluxcord's compatibility with proxy bots, your proxied messages will be sent without any headaches.
+import free from '../../assets/features/free.png';
+import usual from '../../assets/features/usual.png';
+import voice from '../../assets/features/voice.png';
+import thread from '../../assets/features/thread.png';
+import proxies from '../../assets/features/proxies.png';
 
-    Supports PluralKit, Tupperbox (discord bots), Fishing Bucket and PluralFlux (fluxer bots).
-	</Card>
-	<Card title="Free, as in freeeeeeeeeeeeeeeee..." icon="seti:license">
-		Fluxcord is licensed under MIT License, allowing you to view, modify and distribute Fluxcord’s code whatever you like.
+<FeatureRow title="Everything you expect on a bridge bot" image={usual}>
+	It can bridge messages, replies, attachments, emojis, embeds, (bulk-)deletions, edits, and bots, just like any ordinary bridge bot.
+</FeatureRow>
 
-And the main bot will be always free, and that includes voice. It’s self hostable too! Check Fluxcord’s documentation about self hosting [here](/self-hosting/).
-	</Card>
-</CardGrid>
+<FeatureRow title="Scream, cross-platform." reverse image={voice}>
+	Worried about missing a game night? Want to hang out with your friends that's still on the other side? No problem, with Fluxcord's Voice Bridging, you will just seamlessly talk to them, as if they're in the same VC!
+</FeatureRow>
+
+<FeatureRow title="Threads without borders." image={thread}>
+	Your forum posts shouldn't be stuck on one side. Let Fluxcord bridge your forum channel to the other side, and Fluxcord seamlessly bridges threads inside it.
+</FeatureRow>
+
+<FeatureRow title="Headpats-compatible." reverse image={proxies}>
+	No more fighting with your bridge bot over unproxied messages, now with Fluxcord's compatibility with proxy bots, your proxied messages will be sent without any headaches.
+
+	Supports PluralKit, /plu/ral, Tupperbox (discord bots), Fishing Bucket and PluralFlux (fluxer bots).
+</FeatureRow>
+
+<FeatureRow title="Free, as in freeeeeeeeeeeee..." image={free}>
+	Fluxcord is licensed under MIT License, allowing you to view, modify and distribute Fluxcord's code whatever you like.
+
+	And the main bot will be always free, and that includes voice. It's self hostable too! Check Fluxcord's documentation about self hosting [here](/self-hosting/).
+</FeatureRow>
 
 <FluxerHost title="Funded by">
 FluxerHost is powering free infrastructure for Fluxer projects, such as Fluxcord!
