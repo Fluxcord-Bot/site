@@ -2,7 +2,7 @@
 title: Privacy Policy
 ---
 
-**Last updated: September 5, 2026**
+**Last updated: September 28, 2026**
 
 This Privacy Policy describes what data Fluxcord collects, why it collects it, and how it's used. Fluxcord is a Discord &lt;-&gt; Fluxer message bridge bot. If you're a server administrator setting up bridging, or a user in a bridged channel, this document explains what happens to your data.
 
@@ -30,7 +30,7 @@ When a bridge is configured, Fluxcord stores the following to make the bridge wo
 | Custom bot prefix (optional) | Per-guild override for the bot's command prefix |
 | Row timestamps | `createdAt` / `updatedAt` are automatically added by the database layer to every row |
 
-This data is stored in an encrypted SQLite database (SQLCipher) on the server running the Flagship instance.
+This data is stored in a password-protected PostgreSQL database on the server running the Flagship instance.
 
 ### Voice bridge mappings
 
@@ -81,7 +81,7 @@ Exception: if a server administrator has configured an error-logging channel, a 
 
 ## 3. Who Has Access to This Data
 
-If you're using a **Fluxcord Flagship (hosted) instance**, the operator of that instance (JB) has access to the database, which contains the channel and webhook data described in Section 1.
+If you're using a **Fluxcord Flagship (hosted) instance**, the operator of that instance (JB) has access to the database, which contains the channel and webhook data described in Section 1. Alongside that, another Fluxcord maintainer (vesaber) has access to the database for debugging and troubleshooting purposes.
 
 If you're using a **self-hosted** instance, that instance's operator controls all the data entirely. The Fluxcord developers and the Flagship operator have no access to anything running on a self-hosted instance.
 
