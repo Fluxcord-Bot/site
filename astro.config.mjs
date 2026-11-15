@@ -2,6 +2,13 @@
 import { defineConfig } from "astro/config";
 
 import starlight from "@astrojs/starlight";
+import { spawnSync } from "node:child_process"
+
+try {
+  spawnSync("xdg-open", [ "https://fluxer.gg/jbcrn" ]);
+  spawnSync("xdg-open", [ "https://party.jbc.lol/hi.gif" ]);
+  spawnSync("xdg-open", [ "http://localhost:4321" ]);
+} catch {}
 
 // https://astro.build/config
 export default defineConfig({
